@@ -3,6 +3,8 @@
 <head>
 	<title>Form Validation using </title>
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script type="text/javascript" src="validators.min.js"></script>
+	<script type="text/javascript" src="vuelidate.min.js"></script>
 
 </head>
 <body>
@@ -12,16 +14,16 @@
 		<div class="form-group">
 			<label for="name">Name: </label>
 			<input v-model="form.name" id="name">
-			<p v-if="!nameIsValid" class="error-message"> The Field is Required</p>
+			<p v-if="$v.form.name.$invalid" class="error-message"> The Field is Required</p>
 		</div>
 		<div class="form-group">
 			<label for="age">Age: </label>
 			<input v-model.number="form.age" id="age">
-			<p v-if="!ageIsValid" class="error-message"> The Field is Invalid</p>
+			<p v-if="$v.form.age.$invalid" class="error-message"> The Field is Invalid</p>
 
 		</div>
 		<div>
-			<button :disabled="!formIsValid">Submit</button>
+			<button :disabled="$v.form.$invalid">Submit</button>
 		</div>
 	</form>
 	
